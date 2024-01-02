@@ -7,5 +7,5 @@ ENDP = "https://paper-api.alpaca.markets"
 API = TradingClient(KEY, SECRET)
 STOCK_LIST = ["AAPL", "TSLA", "AMZN", "GOOG", "BA", "NKE", "AMGN", "KO", "PG", "MSFT", "CRM", "JPM"]
 FRED = Fred(api_key="f3fea224d98377beff02b72fbe0cb196")
-RRF = (FRED.get_series_latest_release("GS10")/12).iloc[-1]
+RRF = (FRED.get_series_latest_release("GS10")).iloc[-1]/100
 

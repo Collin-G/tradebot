@@ -12,8 +12,8 @@ class MonteCarlo():
     def __init__(self, api):
         self.api = api
         self.stocks = STOCK_LIST
-        self.buys = self.get_weights(30,10000)
-        print(self.buys)
+        self.buys = self.get_weights(7,10000)
+        # print(self.buys)
     
 
     def get_data(self, stocks, start_date, end_date):
@@ -93,7 +93,7 @@ class MonteCarlo():
 
     def get_weights(self, timeframe, sim_count):
         end_date = dt.datetime.now()
-        start_date = end_date - dt.timedelta(days=400)
+        start_date = end_date - dt.timedelta(days=100)
 
         log_returns, mean_returns, cov_returns = self.get_data(STOCK_LIST, start_date, end_date)
 
@@ -119,11 +119,13 @@ class MonteCarlo():
         rounded =  np.around(weights, 2)
         weights = rounded
         single_prices = self.get_single_prices()
-        dataset = pd.DataFrame({'stocks': STOCK_LIST, 'weights': rounded, "prices": single_prices}, columns=['stocks', 'weights', "prices"])
-
+        print(single_prices)
+        dataset = pd.DataFrame({'weights': rounded, "prices": single_prices}, columns=['weights', "prices"])
+        print(dataset)
         mask = dataset["weights"] == 0
         dataset = dataset[~mask]
 
         return dataset
 
 
+m = MonteCarlo(API)

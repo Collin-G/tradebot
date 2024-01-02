@@ -14,7 +14,7 @@ class Bot():
         cash = float(self.api.get_account().cash)*0.9
         table = MonteCarlo(API).buys
         for i,r in table.iterrows():
-            self.buy(r["stocks"], int(cash*r["weights"]/r["prices"]))
+            self.buy(i, int(cash*r["weights"]/r["prices"]))
 
 
     
@@ -29,5 +29,5 @@ class Bot():
 
 
 b = Bot(API)
-# b.make_buys()
+b.make_buys()
 b.close_all()
