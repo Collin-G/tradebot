@@ -1,0 +1,7 @@
+alpaca==1.0.0
+fredapi==0.5.1
+numpy==1.25.2
+pandas==2.1.4
+scipy==1.11.4
+yahooquery==2.3.7
+yfinance==0.2.33
